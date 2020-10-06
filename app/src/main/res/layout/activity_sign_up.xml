@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#ffffff"
-    tools:context=".MainActivity">
+    tools:context=".SignUpActivity">
 
     <LinearLayout
         android:id="@+id/login_layout"
@@ -37,8 +36,21 @@
             android:layout_marginBottom="10dp"
             android:textColor="@color/google_accent_color"
             android:fontFamily="@font/secular_one"
-            android:text="@string/app_slogan"/>
-        <!-- Login Layout -->
+            android:text="@string/sign_up_text"/>
+        <!-- SignUp Layout -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_fullname"
+            android:layout_width="match_parent"
+            style="@style/TextInputLayoutStyle"
+                android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/fullname"
+                android:hint="Enter fullname"
+                android:layout_height="wrap_content"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_id_layout_field"
             android:layout_width="match_parent"
@@ -57,8 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/password_layout_field"
-            style="@style/TextInputLayoutStyle"
             android:transitionName="trans_password"
+            style="@style/TextInputLayoutStyle"
             app:passwordToggleEnabled="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
@@ -68,62 +80,29 @@
                 android:layout_height="wrap_content"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:layout_marginTop="5dp"
-            android:id="@+id/forget_password_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Forget password?"
-            tools:ignore="RtlHardcoded" />
-
         <Button
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
             android:layout_height="wrap_content"
-
-            android:text="SIGN IN"
+            android:text="SIGN UP"
             android:elevation="5dp"
             android:background="@drawable/gradient"
             android:textColor="#ffffff"
-            android:id="@+id/sign_in_btn"/>
+            android:id="@+id/sign_up_btn"/>
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="or"
-            android:layout_gravity="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.button.MaterialButton
-            android:layout_width="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_height="wrap_content"
-            android:text="Google"
-            android:layout_gravity="center"
-            android:drawableLeft="@drawable/ic_icons8_google"
-            android:textColor="@color/google_accent_color"
-            android:id="@+id/google_sign_in_btn"/>
-
     </LinearLayout>
     <TextView
-        android:id="@+id/nav_sign_up"
+        android:id="@+id/nav_sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="20dp"
-        android:text="@string/dont_t_have_an_account_sign_up"/>
-
+        android:text="@string/already_have_an_account_sign_in"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
