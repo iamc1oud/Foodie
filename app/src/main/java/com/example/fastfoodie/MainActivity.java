@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.util.Pair;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mSignUpText;
     private TextInputLayout emailLayout;
     private TextInputLayout passwordLayout;
+
+    // Buttons
     private MaterialButton btn;
 
     @Override
@@ -51,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
                     ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
                     startActivity(intent, options.toBundle());
                 }
+            }
+        });
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MapActivity.class);
+                startActivity(intent);
             }
         });
     }

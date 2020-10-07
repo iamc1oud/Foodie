@@ -16,6 +16,6 @@
     <string name="already_have_an_account_sign_in">Already have an account? <b>Sign in</b></string>
     <string name="dont_t_have_an_account_sign_up">Dont\'t have an account? Sign up</string>
 
-    <string name="mapbox_access_token">pk.eyJ1IjoiY2xvdWRtYXgiLCJhIjoiY2tmejRiOTE4MDdoMTJ6cGRrcmJocHAzbCJ9.LJjV1aK-18AFc_fTFmomSQ</string>
+    <string name="access_token">pk.eyJ1IjoiY2xvdWRtYXgiLCJhIjoiY2tmejRiOTE4MDdoMTJ6cGRrcmJocHAzbCJ9.LJjV1aK-18AFc_fTFmomSQ</string>
 
 </resources>
