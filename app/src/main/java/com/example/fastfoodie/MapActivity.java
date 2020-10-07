@@ -25,13 +25,13 @@ public class MapActivity extends AppCompatActivity {
 
         mMapView.onCreate(savedInstanceState);
 
-//    mMapView.getMapAsync(
-//        new OnMapReadyCallback() {
-//          @Override
-//          public void onMapReady(MapboxMap mapboxMap) {
-//            mapboxMap.setStyle(Style.MAPBOX_STREETS);
-//          }
-//        });
+    mMapView.getMapAsync(
+        new OnMapReadyCallback() {
+          @Override
+          public void onMapReady(MapboxMap mapboxMap) {
+            mapboxMap.setStyle(Style.MAPBOX_STREETS);
+          }
+        });
     }
 
     @Override

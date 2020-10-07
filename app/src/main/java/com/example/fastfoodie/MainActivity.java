@@ -2,6 +2,7 @@ package com.example.fastfoodie;
 
 import android.annotation.SuppressLint;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fastfoodie.authentication.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -26,9 +31,19 @@ public class MainActivity extends AppCompatActivity {
     private TextView mSignUpText;
     private TextInputLayout emailLayout;
     private TextInputLayout passwordLayout;
+    private GoogleSignIn mGoogleSignIn;
 
     // Buttons
     private MaterialButton btn;
+
+    // Google Sign In request code
+    private final static int RC_SIGN_IN = 1;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mGoogleSignIn = new GoogleSignIn(MainActivity.this);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +72,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Google sign in button
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MapActivity.class);
-                startActivity(intent);
+                GoogleSignInClient client = mGoogleSignIn.GoogleSignIn();
+                Intent intent = client.getSignInIntent();
+
+                startActivityForResult(intent, RC_SIGN_IN);
+
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == RC_SIGN_IN){
+            Task<GoogleSignInAccount> task = com.google.android.gms.auth.api.signin.GoogleSignIn.getSignedInAccountFromIntent(data);
+            mGoogleSignIn.handleSignInResult(task);
+        }
     }
 
     void setStyles(){
