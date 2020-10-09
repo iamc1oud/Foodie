@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 
 import com.mapbox.mapboxsdk.Mapbox;
+import com.mapbox.mapboxsdk.camera.CameraPosition;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
 import com.mapbox.mapboxsdk.constants.Style;
+import com.mapbox.mapboxsdk.geometry.LatLng;
 import com.mapbox.mapboxsdk.maps.MapView;
 import com.mapbox.mapboxsdk.maps.MapboxMap;
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback;
@@ -30,6 +33,14 @@ public class MapActivity extends AppCompatActivity {
           @Override
           public void onMapReady(MapboxMap mapboxMap) {
             mapboxMap.setStyle(Style.MAPBOX_STREETS);
+//              mapboxMap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder()
+//                              .target(new LatLng(36,50))
+//                              .zoom(10)
+//                              .tilt(45.0)
+//                              .build()),
+//                      10000);
+//            mapboxMap.getUiSettings().setAttributionEnabled(false);
+//            mapboxMap.getUiSettings().setLogoEnabled(false);
           }
         });
     }
