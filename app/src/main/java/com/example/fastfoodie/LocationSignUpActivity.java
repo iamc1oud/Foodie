@@ -135,32 +135,51 @@ public class LocationSignUpActivity extends AppCompatActivity {
                 getResources().getColorStateList(R.color.google_accent_color));
             btnHome.setTextColor(getResources().getColorStateList(R.color.white));
             labelText = btnHome.getText().toString();
+            deselectOtherOptions(btnWork, btnOther);
           }
         });
 
     btnWork.setOnClickListener(
-            new View.OnClickListener() {
-              @SuppressLint({"UseCompatLoadingForDrawables", "UseCompatLoadingForColorStateLists"})
-              @Override
-              public void onClick(View view) {
-                btnWork.setBackgroundTintList(
-                        getResources().getColorStateList(R.color.google_accent_color));
-                btnWork.setTextColor(getResources().getColorStateList(R.color.white));
-                labelText = btnWork.getText().toString();
-              }
-            });
+        new View.OnClickListener() {
+          @SuppressLint({"UseCompatLoadingForDrawables", "UseCompatLoadingForColorStateLists"})
+          @Override
+          public void onClick(View view) {
+            btnWork.setBackgroundTintList(
+                getResources().getColorStateList(R.color.google_accent_color));
+            btnWork.setTextColor(getResources().getColorStateList(R.color.white));
+            labelText = btnWork.getText().toString();
+            deselectOtherOptions(btnHome, btnOther);
+          }
+        });
 
     btnOther.setOnClickListener(
-            new View.OnClickListener() {
-              @SuppressLint({"UseCompatLoadingForDrawables", "UseCompatLoadingForColorStateLists"})
-              @Override
-              public void onClick(View view) {
-                btnOther.setBackgroundTintList(
-                        getResources().getColorStateList(R.color.google_accent_color));
-                btnOther.setTextColor(getResources().getColorStateList(R.color.white));
-                labelText = btnOther.getText().toString();
-              }
-            });
+        new View.OnClickListener() {
+          @SuppressLint({"UseCompatLoadingForDrawables", "UseCompatLoadingForColorStateLists"})
+          @Override
+          public void onClick(View view) {
+            btnOther.setBackgroundTintList(
+                getResources().getColorStateList(R.color.google_accent_color));
+            btnOther.setTextColor(getResources().getColorStateList(R.color.white));
+            labelText = btnOther.getText().toString();
+            deselectOtherOptions(btnHome, btnWork);
+          }
+        });
+  }
+
+  private void deselectOtherOptions(Button btn1, Button btn2) {
+      try {
+          btn1.setBackgroundTintList(getResources().getColorStateList(R.color.mtrl_btn_text_btn_bg_color_selector));
+          btn1.setTextColor(getResources().getColorStateList(R.color.black_overlay));
+
+          btn2.setBackgroundTintList(getResources().getColorStateList(R.color.mtrl_btn_text_btn_bg_color_selector));
+          btn2.setTextColor(getResources().getColorStateList(R.color.black_overlay));
+      }
+      catch (Exception e){
+
+      }
+      finally{
+          System.out.println(labelText);
+      }
   }
 
   void getIds() {
