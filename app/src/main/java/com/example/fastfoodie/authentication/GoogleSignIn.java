@@ -6,13 +6,18 @@ import android.content.Intent;
 import android.util.Log;
 import androidx.annotation.NonNull;
 import android.content.Intent;
+import android.widget.Toast;
+
 import com.example.fastfoodie.LocationSignUpActivity;
 import com.example.fastfoodie.database.Database;
+import com.example.fastfoodie.models.FirebaseUserModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+
+import java.util.Objects;
 
 public class GoogleSignIn {
     private static GoogleSignIn INSTANCE;
@@ -51,7 +56,12 @@ public class GoogleSignIn {
             assert account != null;
 
             // Registering the user after successful google sign
+
             Database _db = Database.getDatabaseInstance();
+            FirebaseUserModel userModel = FirebaseUserModel.getUserInstanceModel();
+            userModel.setPhoto_url(account.getPhotoUrl());
+            userModel.setUsername(account.getDisplayName());
+            userModel.setUid(account.getId());
             _db.registerUser(account);
             return true;
         }

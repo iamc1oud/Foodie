@@ -13,11 +13,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -30,6 +31,10 @@ public class Database implements SignUpRepository {
   // Constructor
   private Database() {
     this._db = FirebaseFirestore.getInstance();
+    FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+            .setTimestampsInSnapshotsEnabled(true)
+            .build();
+    this._db.setFirestoreSettings(settings);
   }
 
   // Singleton object of DB
@@ -115,5 +120,13 @@ public class Database implements SignUpRepository {
         }
       }
     });
+  }
+
+  @Override
+  public boolean checkIfUserExists(String uid) {
+    Task<QuerySnapshot> queryResult =  this._db.collection("users")
+            .whereEqualTo("uid", uid)
+            .get();
+    return false;
   }
 }

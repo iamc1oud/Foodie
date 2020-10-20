@@ -3,6 +3,7 @@ package com.example.fastfoodie;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -41,7 +42,6 @@ public class LocationSignUpActivity extends AppCompatActivity {
     setContentView(R.layout.activity_location_sign_up);
     getIds();
     mMapView.onCreate(savedInstanceState);
-
     mMapView.getMapAsync(
         new OnMapReadyCallback() {
           @Override
@@ -66,19 +66,8 @@ public class LocationSignUpActivity extends AppCompatActivity {
 
     labelButtonClickEvent();
 
-    // Validate address and note on click "Save Location"
-    btn_location.setOnClickListener(
-        new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-            String address = inputAddress.getText().toString();
-            String note = inputNote.getText().toString();
-
-            // Save to database
-            Database _db = Database.getDatabaseInstance();
-            _db.saveLocationAtSignUp(address, note, labelText);
-          }
-        });
+    // Vali address and note on click "Save Location"
+    submitInfo();
   }
 
   @Override
@@ -166,6 +155,26 @@ public class LocationSignUpActivity extends AppCompatActivity {
         });
   }
 
+  void submitInfo() {
+      btn_location.setOnClickListener(
+              new View.OnClickListener() {
+                  @Override
+                  public void onClick(View view) {
+
+                      String address = inputAddress.getText().toString();
+                      String note = inputNote.getText().toString();
+
+                      // Save to database
+                      Database _db = Database.getDatabaseInstance();
+
+                      _db.saveLocationAtSignUp(address, note, labelText);
+
+                      // Navigate to map view screen
+                      Intent intent = new Intent(LocationSignUpActivity.this, MapViewActivity.class);
+                      startActivity(intent);
+                  }
+              });
+  }
   private void deselectOtherOptions(Button btn1, Button btn2) {
       try {
           btn1.setBackgroundTintList(getResources().getColorStateList(R.color.mtrl_btn_text_btn_bg_color_selector));

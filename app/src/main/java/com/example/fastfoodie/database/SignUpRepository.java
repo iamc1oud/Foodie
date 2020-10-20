@@ -17,4 +17,9 @@ public interface SignUpRepository {
      */
 
     void saveLocationAtSignUp(String label, String address, String note);
+
+  /**
+   * Checking whether the user already exists or not
+   * @param uid The UID of user on signing with Google*/
+  boolean checkIfUserExists(String uid);
 }

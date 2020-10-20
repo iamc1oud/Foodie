@@ -108,8 +108,15 @@ public class MainActivity extends AppCompatActivity {
   }
 
   private void setupLocationActivity(){
-    Intent intent = new Intent(MainActivity.this, LocationSignUpActivity.class);
-    startActivity(intent);
+    if(false){
+      Intent intent = new Intent(MainActivity.this, LocationSignUpActivity.class);
+      startActivity(intent);
+    }
+    else {
+      Intent intent = new Intent(MainActivity.this, MapViewActivity.class);
+      startActivity(intent);
+    }
+
   }
 
 
